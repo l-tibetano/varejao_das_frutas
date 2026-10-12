@@ -9,7 +9,7 @@ const linkCls =
 export function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <>
-      <Link to="/" hash="lojas" className={linkCls} onClick={onNavigate}>
+      <Link to="/" hash="lojas" activeOptions={{ includeHash: true }} className={linkCls} onClick={onNavigate}>
         Lojas
       </Link>
       <Link to="/sobre" className={linkCls} activeProps={{ className: "text-primary-dark" }} onClick={onNavigate}>

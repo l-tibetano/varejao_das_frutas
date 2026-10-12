@@ -26,10 +26,10 @@ export function PromoCarousel({ slides, interval = 5000 }: { slides: Banner[]; i
     <section
       className="relative h-[380px] w-full overflow-hidden bg-overlay sm:h-[420px] lg:h-[460px]"
       aria-roledescription="carrossel"
-      onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
+      onTouchStart={(e) => (touchX.current = e.touches[0]?.clientX ?? null)}
       onTouchEnd={(e) => {
         if (touchX.current === null) return;
-        const dx = e.changedTouches[0].clientX - touchX.current;
+        const dx = (e.changedTouches[0]?.clientX ?? touchX.current) - touchX.current;
         if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1));
         touchX.current = null;
       }}
@@ -58,7 +58,7 @@ export function PromoCarousel({ slides, interval = 5000 }: { slides: Banner[]; i
               <p className="mt-3 text-base text-primary-foreground/90 sm:text-lg">{s.descricao}</p>
               <Link
                 to={s.destino.to}
-                hash={s.destino.hash ?? ""}
+                {...(s.destino.hash ? { hash: s.destino.hash } : {})}
                 tabIndex={i === index ? 0 : -1}
                 className="mt-6 inline-flex h-12 items-center rounded-full bg-primary px-7 font-bold text-primary-foreground shadow-card transition-colors hover:bg-primary-dark"
               >
