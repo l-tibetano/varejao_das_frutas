@@ -1,24 +1,60 @@
+import { useCallback, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { PromoCarousel } from "@/components/site/PromoCarousel";
+import { OfferCard } from "@/components/site/OfferCard";
+import { FlyerViewer } from "@/components/site/FlyerViewer";
+import { DeliverySection } from "@/components/site/DeliverySection";
+import { StoreCard } from "@/components/site/StoreCard";
+import { SectionHeading } from "@/components/site/SectionHeading";
+import { banners } from "@/data/banners";
+import { folhetos, type Folheto } from "@/data/folhetos";
+import { lojas } from "@/data/lojas";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "Varejão das Frutas — Ofertas, delivery e lojas em Janaúba e Nova Porteirinha";
+const description =
+  "Confira os folhetos de ofertas do Varejão das Frutas, receba suas compras em casa e encontre nossas lojas em Janaúba e Nova Porteirinha.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  const [aberto, setAberto] = useState<Folheto | null>(null);
+  const fechar = useCallback(() => setAberto(null), []);
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <PromoCarousel slides={banners} />
+
+      <section id="ofertas" className="container-site py-16 sm:py-20">
+        <SectionHeading title="Ofertas em destaque" subtitle="Confira nossos folhetos e aproveite as ofertas disponíveis!" />
+        <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
+          {folhetos.map((f) => (
+            <OfferCard key={f.id} folheto={f} onOpen={() => setAberto(f)} />
+          ))}
+        </div>
+      </section>
+
+      <DeliverySection />
+
+      <section id="lojas" className="container-site py-16 sm:py-20">
+        <SectionHeading title="Nossas lojas" subtitle="Encontre a unidade mais próxima de você!" />
+        <div className="grid gap-6 md:grid-cols-2">
+          {lojas.map((l) => (
+            <StoreCard key={l.id} loja={l} />
+          ))}
+        </div>
+      </section>
+
+      <FlyerViewer folheto={aberto} onClose={fechar} />
+    </>
   );
 }
