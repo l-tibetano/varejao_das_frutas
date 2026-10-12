@@ -58,7 +58,7 @@ export function PromoCarousel({ slides, interval = 5000 }: { slides: Banner[]; i
               <p className="mt-3 text-base text-primary-foreground/90 sm:text-lg">{s.descricao}</p>
               <Link
                 to={s.destino.to}
-                hash={s.destino.hash}
+                hash={s.destino.hash ?? ""}
                 tabIndex={i === index ? 0 : -1}
                 className="mt-6 inline-flex h-12 items-center rounded-full bg-primary px-7 font-bold text-primary-foreground shadow-card transition-colors hover:bg-primary-dark"
               >

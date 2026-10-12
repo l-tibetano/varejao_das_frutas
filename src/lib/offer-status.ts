@@ -4,7 +4,7 @@ export type OfferStatus = {
 };
 
 const toDay = (iso: string) => {
-  const [y, m, d] = iso.split("-").map(Number);
+  const [y = 0, m = 1, d = 1] = iso.split("-").map(Number);
   return new Date(y, m - 1, d).getTime();
 };
 const DAY = 86_400_000;
