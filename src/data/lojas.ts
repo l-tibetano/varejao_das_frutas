@@ -17,12 +17,12 @@ export type Loja = {
 
 export const lojas: Loja[] = [
   {
-    id: "janauba",
-    nome: "Unidade Janaúba",
-    endereco: "Avenida Brasil, 250, Centro, Janaúba - MG",
-    telefone: "(38) 99999-1111",
+    id: "matriz",
+    nome: "Loja Matriz",
+    endereco: "Avenida Brasil, 1272, Esplanada, Janaúba - MG",
+    telefone: "(38) 98816-3132",
     horario: "Segunda a sábado, das 7h às 20h",
-    localizacao: "Avenida Brasil, 250, Centro, Janaúba - MG",
+    localizacao: "Avenida Brasil, 1272, Esplanada, Janaúba - MG",
     imagens: [
       { src: fachada, alt: "Fachada da unidade Janaúba" },
       { src: interior, alt: "Interior da unidade Janaúba" },
@@ -30,12 +30,12 @@ export const lojas: Loja[] = [
     ],
   },
   {
-    id: "nova-porteirinha",
-    nome: "Unidade Nova Porteirinha",
-    endereco: "Rua das Flores, 120, Centro, Nova Porteirinha - MG",
-    telefone: "(38) 99999-2222",
-    horario: "Segunda a sábado, das 7h às 19h",
-    localizacao: "Rua das Flores, 120, Centro, Nova Porteirinha - MG",
+    id: "filial",
+    nome: "Loja Filial",
+    endereco: "Avenida Santa Mônica, 1751, Planalto, Janaúba - MG",
+    telefone: "(38) 98816-3132",
+    horario: "Segunda a sábado, das 7h às 20h",
+    localizacao: "Avenida Santa Mônica, 1751, Planalto, Janaúba - MG",
     imagens: [
       { src: fachada2, alt: "Fachada da unidade Nova Porteirinha" },
       { src: interior2, alt: "Interior da unidade Nova Porteirinha" },
