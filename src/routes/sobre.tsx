@@ -42,9 +42,13 @@ function Sobre() {
       <div className="mt-10 space-y-6">
         <Bloco icon={Users} title="Quem somos">
           <p>
-            O Varejão das Frutas é um supermercado que busca oferecer praticidade, variedade e preços competitivos
-            para facilitar as compras do dia a dia. Trabalhamos para proporcionar uma experiência de compra agradável,
-            com opções para abastecer sua casa e encontrar produtos frescos para toda a família.
+            O Varejão das Frutas é uma empresa familiar de Janaúba-MG, criada para oferecer às famílias da nossa cidade 
+            produtos de qualidade, variedade e preços justos, sempre com um atendimento próximo e de confiança.
+            Hoje, somos um supermercado completo, com hortifruti, mercearia, bebidas, laticínios, congelados, produtos de 
+            limpeza e açougue, além de um forte trabalho de delivery e atendimento digital. Somos uma empresa jovem, que 
+            acredita em inovação, tecnologia e no poder de estar cada vez mais perto dos nossos clientes.
+            Mais do que vender alimentos, queremos facilitar a vida das pessoas e fazer parte do dia a dia das famílias de 
+            Janaúba e região.
           </p>
         </Bloco>
 
