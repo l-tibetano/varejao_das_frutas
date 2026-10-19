@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep About-only institutional content and its presentation in the About route, reusing existing semantic tokens; this isolates institutional updates from shared pages and layouts.
