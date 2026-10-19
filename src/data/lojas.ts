@@ -9,7 +9,8 @@ export type Loja = {
   nome: string;
   endereco: string;
   telefone: string;
-  horario: string;
+  /** Horários de funcionamento exibidos um por linha (dias de semana e domingo). */
+  horarios: Horario[];
   /** Texto de busca ou coordenadas "lat,lng" para o Google Maps */
   localizacao: string;
   imagens: { src: string; alt: string }[];
