@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { HeartHandshake, MapPin, Store, Users } from "lucide-react";
+import { BadgeCheck, Eye, Heart, HeartHandshake, MapPin, Rocket, Store, Target, Users } from "lucide-react";
 import { DeliveryConditionCard } from "@/components/site/DeliveryConditionCard";
 import { cidadesTexto, condicoesEntrega, delivery, formatBRL } from "@/data/delivery";
 
@@ -14,6 +14,8 @@ export const Route = createFileRoute("/sobre")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Sobre,
@@ -29,6 +31,83 @@ function Bloco({ icon: Icon, title, children }: { icon: typeof Users; title: str
         <h2 className="text-2xl font-bold text-foreground">{title}</h2>
       </div>
       <div className="mt-4 space-y-4 text-muted-foreground">{children}</div>
+    </section>
+  );
+}
+
+const pilares = [
+  {
+    title: "Propósito",
+    icon: Target,
+    text: "Transformar a compra de alimentos em uma experiência simples, acessível e de qualidade, levando produtos frescos, bons preços e atendimento de verdade para as famílias de Janaúba e região.",
+  },
+  {
+    title: "Missão",
+    icon: Rocket,
+    text: "Oferecer frutas, verduras, carnes, mercearia e demais produtos essenciais com qualidade, variedade e preços competitivos, buscando sempre facilitar a vida dos nossos clientes através de um atendimento próximo, rápido e eficiente.",
+  },
+  {
+    title: "Visão",
+    icon: Eye,
+    text: "Supermercado omnichannel com lojas físicas, porém ser referência no digital com o delivery de alimentos em Janaúba e região! Com um mercado completo na palma da mão. Pediu? Chegou! Vem pro Varejão!",
+  },
+];
+
+const valores = [
+  { name: "Preço justo", description: "trabalhar para oferecer sempre o melhor preço possível." },
+  { name: "Qualidade", description: "produtos frescos, selecionados e de confiança." },
+  { name: "Cliente em primeiro lugar", description: "ouvir, respeitar e buscar superar as expectativas." },
+  { name: "Honestidade", description: "transparência em nossas relações com clientes, colaboradores e fornecedores." },
+  { name: "Agilidade", description: "facilitar a compra e entregar soluções rápidas." },
+  { name: "Inovação", description: "buscar novas formas de vender, atender e melhorar a experiência do cliente." },
+  { name: "Respeito às pessoas", description: "valorizar clientes, colaboradores e parceiros." },
+  { name: "Trabalho em equipe", description: "crescer juntos e fazer acontecer." },
+  { name: "Compromisso com a cidade", description: "crescer junto com Janaúba e contribuir para o desenvolvimento da nossa comunidade." },
+];
+
+function NossaEssencia() {
+  return (
+    <section aria-labelledby="nossa-essencia" className="py-6 sm:py-8">
+      <h2 id="nossa-essencia" className="text-center text-3xl font-extrabold text-primary-dark sm:text-4xl">
+        Nossa essência
+      </h2>
+      <span aria-hidden="true" className="mx-auto mt-2 block h-1 w-14 rounded-full bg-promo" />
+
+      <div className="mt-8 grid gap-5 lg:grid-cols-3">
+        {pilares.map(({ title, icon: Icon, text }) => (
+          <article key={title} className="rounded-2xl bg-card p-6 shadow-card">
+            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-soft text-primary-dark">
+              <Icon aria-hidden="true" className="h-5 w-5" />
+            </span>
+            <h3 className="mt-4 text-2xl font-bold text-primary-dark">{title}</h3>
+            <p className="mt-3 leading-relaxed text-muted-foreground">{text}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="mt-8">
+        <div className="flex items-center gap-3">
+          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-soft text-primary-dark">
+            <Heart aria-hidden="true" className="h-5 w-5" />
+          </span>
+          <h3 className="text-2xl font-bold text-primary-dark">Valores</h3>
+        </div>
+        <ul className="mt-5 grid gap-x-8 gap-y-5 sm:grid-cols-2">
+          {valores.map(({ name, description }) => (
+            <li key={name} className="flex items-start gap-3 border-b border-border pb-5">
+              <BadgeCheck aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-primary" />
+              <p className="min-w-0 leading-relaxed text-muted-foreground">
+                <strong className="block font-bold text-primary-dark">{name}</strong>
+                {description}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <p className="mt-8 rounded-xl bg-primary-soft px-5 py-5 text-center font-display text-xl font-bold text-primary-dark sm:text-2xl">
+        Pediu? Chegou! Vem pro Varejão!
+      </p>
     </section>
   );
 }
@@ -51,6 +130,8 @@ function Sobre() {
             Janaúba e região.
           </p>
         </Bloco>
+
+        <NossaEssencia />
 
         <Bloco icon={Store} title="Nossas lojas">
           <p>
