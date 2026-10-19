@@ -17,9 +17,16 @@ export function StoreCard({ loja }: { loja: Loja }) {
             {loja.telefone}
           </a>
         </p>
-        <p className="flex gap-2.5 text-muted-foreground">
-          <Clock className="mt-0.5 h-5 w-5 shrink-0 text-primary" /> {loja.horario}
-        </p>
+        <ul className="space-y-1.5">
+          {loja.horarios.map((h) => (
+            <li key={h.dias} className="flex gap-2.5 text-muted-foreground">
+              <Clock className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+              <span>
+                {h.dias}: {h.das}.
+              </span>
+            </li>
+          ))}
+        </ul>
         <a
           href={mapsUrl(loja.localizacao)}
           target="_blank"
