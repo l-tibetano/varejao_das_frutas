@@ -9,7 +9,7 @@ export type Folheto = {
   capa: string;
   /** Datas no formato AAAA-MM-DD */
   inicio: string;
-  fim: string;
+  fim?: string;
   paginas: string[];
 };
 

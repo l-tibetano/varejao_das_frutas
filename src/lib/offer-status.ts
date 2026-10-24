@@ -9,12 +9,13 @@ const toDay = (iso: string) => {
 };
 const DAY = 86_400_000;
 
-export function getOfferStatus(inicio: string, fim: string, hoje = new Date()): OfferStatus {
+export function getOfferStatus(inicio: string, fim: string | undefined, hoje = new Date()): OfferStatus {
   const today = new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate()).getTime();
   const start = Math.round((toDay(inicio) - today) / DAY);
-  const end = Math.round((toDay(fim) - today) / DAY);
+  const end = fim ? Math.round((toDay(fim) - today) / DAY) : null;
 
   if (start > 0) return { label: start === 1 ? "Começa amanhã" : `Começa em ${start} dias`, tone: "upcoming" };
+  if (end === null) return { label: "Oferta disponível", tone: "active" };
   if (end < 0) return { label: "Oferta encerrada", tone: "expired" };
   if (end === 0) return { label: "Último dia", tone: "urgent" };
   if (end === 1) return { label: "Expira amanhã", tone: "urgent" };
