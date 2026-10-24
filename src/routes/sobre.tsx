@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { BadgeCheck, Eye, Heart, HeartHandshake, MapPin, Rocket, Store, Target, Users } from "lucide-react";
 import { DeliveryConditionCard } from "@/components/site/DeliveryConditionCard";
+import { DeliveryHours } from "@/components/site/DeliveryHours";
 import { cidadesTexto, condicoesEntrega, delivery, formatBRL } from "@/data/delivery";
 
 const title = "Sobre o Varejão das Frutas — Quem somos e nosso delivery";
@@ -171,6 +172,7 @@ function Sobre() {
               </span>
             ))}
           </div>
+          <DeliveryHours className="mt-4" />
         </section>
 
         <Bloco icon={HeartHandshake} title="Nosso compromisso">

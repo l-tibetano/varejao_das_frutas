@@ -1,8 +1,14 @@
 // Informações do delivery — usadas na página inicial e na página Sobre.
+export type HorarioDelivery = { periodo: string; das: string };
+
 export const delivery = {
   cidades: ["Janaúba", "Nova Porteirinha"],
   valorMinimoFrete: 50,
   taxaEntrega: 5,
+  horarios: [
+    { periodo: "Manhã", das: "das 8h às 13h" },
+    { periodo: "Tarde", das: "das 15h às 19h" },
+  ] as HorarioDelivery[],
 };
 
 export const formatBRL = (v: number) =>
