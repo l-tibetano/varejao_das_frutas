@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { mapsUrl } from "@/data/lojas";
 import { contato } from "@/data/site";
+
 
 const title = "Contato — Varejão das Frutas";
 const description = "Fale com o Varejão das Frutas por telefone, e-mail ou redes sociais. Lojas em Janaúba e Nova Porteirinha.";
@@ -68,11 +70,14 @@ function Contato() {
 
       <h2 className="mt-10 mb-4 text-2xl font-bold text-foreground">Localização</h2>
       <div className="grid gap-4 sm:grid-cols-2">
-        {contato.cidades.map((c) => (
-          <Item key={c} icon={MapPin} label="Unidade">
-            {c}
+        {contato.unidades.map((u) => (
+          <Item key={u.nome} icon={MapPin} label={u.nome}>
+            <a href={mapsUrl(u.endereco)} target="_blank" rel="noopener noreferrer" className={link}>
+              {u.endereco}
+            </a>
           </Item>
         ))}
+
       </div>
     </div>
   );
