@@ -24,13 +24,13 @@ const temSimbolo = (container: HTMLElement) =>
 describe("símbolo do Varejão das Frutas", () => {
   it("aparece no topo da página Sobre", () => {
     const Sobre = SobreRoute.options.component as React.FC;
-    const { container } = render(<Sobre />);
+    const { container } = render(<Sobre />, { wrapper: comRota });
     expect(temSimbolo(container)).toBe(true);
   });
 
   it("aparece no topo da página Contato", () => {
     const Contato = ContatoRoute.options.component as React.FC;
-    const { container } = render(<Contato />);
+    const { container } = render(<Contato />, { wrapper: comRota });
     expect(temSimbolo(container)).toBe(true);
   });
 
