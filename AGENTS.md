@@ -11,3 +11,4 @@
 
 - Keep About-only institutional content and its presentation in the About route, reusing existing semantic tokens; this isolates institutional updates from shared pages and layouts.
 - Flyer cards and their viewer share the browser-updated offer-status hook and order-link component, so expiration and WhatsApp behavior remain consistent without duplicating dates or contact URLs.
+- The brand mark lives in src/assets and is imported only through the shared components — Logo (symbol plus name) for header and footer, BrandSymbol (symbol alone) for page openings and the flyer viewer — so the mark stays identical everywhere and the asset is referenced from one place.
