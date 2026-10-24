@@ -36,7 +36,7 @@ describe("validade dos folhetos", () => {
   });
 
   it("não classifica como expirado um folheto sem data final", () => {
-    const undated = { ...flyer, fim: undefined };
+    const undated: Folheto = { id: flyer.id, nome: flyer.nome, inicio: flyer.inicio, capa: flyer.capa, paginas: flyer.paginas };
     expect(getOfferStatus(undated.inicio, undated.fim).tone).toBe("active");
     render(<><OfferCard folheto={undated} onOpen={() => {}} /><FlyerViewer folheto={undated} onClose={() => {}} /></>);
     expect(screen.getAllByRole("link", { name: "Pedir agora pelo WhatsApp" })).toHaveLength(2);
