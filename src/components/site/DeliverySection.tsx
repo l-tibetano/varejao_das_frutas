@@ -3,6 +3,7 @@ import { MapPin } from "lucide-react";
 import sacolas from "@/assets/delivery-sacolas.jpg";
 import { condicoesEntrega, delivery } from "@/data/delivery";
 import { DeliveryConditionCard } from "./DeliveryConditionCard";
+import { DeliveryHours } from "./DeliveryHours";
 
 export function DeliverySection() {
   return (
@@ -59,7 +60,9 @@ export function DeliverySection() {
                 <MapPin className="h-4 w-4 text-promo" /> {c}
               </span>
             ))}
-          </div>
+        </div>
+
+        <DeliveryHours className="mt-4" />
         </div>
       </div>
     </section>
