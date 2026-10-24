@@ -12,14 +12,13 @@ describe("Contato — seção Localização", () => {
     const Contato = Route.options.component as React.FC;
     render(<Contato />);
 
-    const [matriz, filial] = contato.unidades;
+    expect(contato.unidades.map((u) => u.nome)).toEqual(["Matriz", "Filial"]);
+    expect(contato.unidades.map((u) => u.endereco)).toEqual([
+      "Avenida Brasil, 1272, Esplanada, Janaúba - MG",
+      "Avenida Santa Mônica, 1751, Planalto, Janaúba - MG",
+    ]);
 
-    expect(matriz.nome).toBe("Matriz");
-    expect(filial.nome).toBe("Filial");
-    expect(matriz.endereco).toBe("Avenida Brasil, 1272, Esplanada, Janaúba - MG");
-    expect(filial.endereco).toBe("Avenida Santa Mônica, 1751, Planalto, Janaúba - MG");
-
-    for (const unidade of [matriz, filial]) {
+    for (const unidade of contato.unidades) {
       expect(screen.getByText(unidade.nome)).toBeTruthy();
       const link = screen.getByRole("link", { name: unidade.endereco });
       expect(link.getAttribute("href")).toBe(mapsUrl(unidade.endereco));
