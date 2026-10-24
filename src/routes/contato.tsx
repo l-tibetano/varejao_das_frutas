@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { mapsUrl } from "@/data/lojas";
 import { contato } from "@/data/site";
+
 
 const title = "Contato — Varejão das Frutas";
 const description = "Fale com o Varejão das Frutas por telefone, e-mail ou redes sociais. Lojas em Janaúba e Nova Porteirinha.";
