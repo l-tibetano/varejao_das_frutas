@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { mapsUrl } from "@/data/lojas";
 import { contato } from "@/data/site";
+import { BrandSymbol } from "@/components/site/BrandSymbol";
 
 
 const title = "Contato — Varejão das Frutas";
@@ -40,7 +41,8 @@ const link = "transition-colors hover:text-primary-dark hover:underline";
 function Contato() {
   return (
     <div className="container-site max-w-4xl py-12 sm:py-16">
-      <h1 className="text-center text-4xl font-extrabold text-foreground sm:text-5xl">Entre em contato</h1>
+      <BrandSymbol className="mx-auto h-20" />
+      <h1 className="mt-3 text-center text-4xl font-extrabold text-foreground sm:text-5xl">Entre em contato</h1>
       <span className="mx-auto mt-3 block h-1 w-16 rounded-full bg-promo" />
       <p className="mt-4 text-center text-muted-foreground">Estamos à disposição para atender você!</p>
 

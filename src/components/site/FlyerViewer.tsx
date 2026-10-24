@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, X, ZoomIn, ZoomOut } from "lucide-react";
 import type { Folheto } from "@/data/folhetos";
 import { Button } from "@/components/ui/button";
 import { FlyerOrderButton } from "@/components/site/FlyerOrderButton";
+import { BrandSymbol } from "@/components/site/BrandSymbol";
 import { useOfferStatus } from "@/hooks/use-offer-status";
 import { cn } from "@/lib/utils";
 
@@ -38,11 +39,14 @@ export function FlyerViewer({ folheto, onClose }: { folheto: Folheto | null; onC
   return (
     <div className="fixed inset-0 z-50 flex h-dvh flex-col bg-overlay/95" role="dialog" aria-modal="true" aria-label={folheto.nome}>
       <div className="flex shrink-0 items-center justify-between gap-2 px-3 py-3 text-primary-foreground sm:px-6">
-        <div className="min-w-0">
-          <p className="truncate font-display text-lg font-bold">{folheto.nome}</p>
-          <p className="text-sm text-primary-foreground/70">
-            Página {page + 1} de {total}
-          </p>
+        <div className="flex min-w-0 items-center gap-3">
+          <BrandSymbol className="h-10" />
+          <div className="min-w-0">
+            <p className="truncate font-display text-lg font-bold">{folheto.nome}</p>
+            <p className="text-sm text-primary-foreground/70">
+              Página {page + 1} de {total}
+            </p>
+          </div>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="ghost" className={ctrl} onClick={() => setZoom((z) => Math.max(1, z - 0.5))} disabled={zoom <= 1} aria-label="Reduzir" title="Reduzir">
