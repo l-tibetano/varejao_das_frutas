@@ -3,10 +3,10 @@ export const contato = {
   telefone: "(38) 98816-3132",
   telefoneLink: "tel:+5538988163132",
   email: "contato@varejaodasfrutas.com.br",
-  whatsappUrl: "https://wa.me/5538988163132",
-  instagram: { usuario: "@varejaodasfrutas", url: "https://instagram.com/varejaodasfrutas" },
-  facebook: { nome: "Varejão das Frutas", url: "https://facebook.com/varejaodasfrutas" },
-  cidades: ["Janaúba - MG", "Nova Porteirinha - MG"],
+  whatsappUrl: "https://wa.me/message/BY5K2DVXUUI2J1",
+  instagram: { usuario: "@varejaodasfrutasjba", url: "https://www.instagram.com/varejaodasfrutasjba?xtok=MzhoeDdjZDdrcjU3" },
+  facebook: { nome: "Varejão das Frutas", url: "https://www.facebook.com/share/1F5edhdd7B/?mibextid=wwXIfr" },
+  cidades: ["Esplanada — Janaúba/MG", "Planalto — Janaúba/MG"],
 };
 
 export const slogan = "Praticidade, economia e qualidade para o seu dia a dia.";
