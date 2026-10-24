@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { Menu, UserRound, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Logo } from "./Logo";
 
 const linkCls =
@@ -27,18 +28,25 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-card/95 backdrop-blur">
       <div className="container-site flex h-16 items-center justify-between">
-        <Logo />
+        <div className="flex items-center gap-2 sm:gap-4">
+          <Button asChild variant="outline" className="h-10 shrink-0 px-3 font-semibold text-primary-dark">
+            <Link to="/login" onClick={() => setOpen(false)}><UserRound aria-hidden="true" />Entrar</Link>
+          </Button>
+          <Logo />
+        </div>
         <nav className="hidden items-center gap-1 md:flex" aria-label="Principal">
           <NavLinks />
         </nav>
-        <button
+        <Button
+          variant="ghost"
+          size="icon"
           className="flex h-11 w-11 items-center justify-center rounded-md text-foreground hover:bg-muted md:hidden"
           onClick={() => setOpen((o) => !o)}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        </Button>
       </div>
       {open && (
         <nav className="flex flex-col gap-1 border-t border-border bg-card px-4 py-3 md:hidden" aria-label="Menu móvel">
