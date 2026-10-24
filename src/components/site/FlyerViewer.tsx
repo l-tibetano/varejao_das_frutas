@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, X, ZoomIn, ZoomOut } from "lucide-react";
 import type { Folheto } from "@/data/folhetos";
+import { Button } from "@/components/ui/button";
+import { FlyerOrderButton } from "@/components/site/FlyerOrderButton";
+import { useOfferStatus } from "@/hooks/use-offer-status";
+import { cn } from "@/lib/utils";
 
 const ctrl =
   "flex h-11 w-11 items-center justify-center rounded-full bg-card/15 text-primary-foreground transition hover:bg-card/30 disabled:opacity-40";
@@ -8,6 +12,8 @@ const ctrl =
 export function FlyerViewer({ folheto, onClose }: { folheto: Folheto | null; onClose: () => void }) {
   const [page, setPage] = useState(0);
   const [zoom, setZoom] = useState(1);
+  const status = useOfferStatus(folheto?.inicio ?? "", folheto?.fim);
+  const expired = status?.tone === "expired";
 
   useEffect(() => {
     setPage(0);
@@ -30,8 +36,8 @@ export function FlyerViewer({ folheto, onClose }: { folheto: Folheto | null; onC
   const total = folheto.paginas.length;
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-overlay/95" role="dialog" aria-modal="true" aria-label={folheto.nome}>
-      <div className="flex items-center justify-between gap-2 px-3 py-3 text-primary-foreground sm:px-6">
+    <div className="fixed inset-0 z-50 flex h-dvh flex-col bg-overlay/95" role="dialog" aria-modal="true" aria-label={folheto.nome}>
+      <div className="flex shrink-0 items-center justify-between gap-2 px-3 py-3 text-primary-foreground sm:px-6">
         <div className="min-w-0">
           <p className="truncate font-display text-lg font-bold">{folheto.nome}</p>
           <p className="text-sm text-primary-foreground/70">
@@ -39,48 +45,54 @@ export function FlyerViewer({ folheto, onClose }: { folheto: Folheto | null; onC
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <button className={ctrl} onClick={() => setZoom((z) => Math.max(1, z - 0.5))} disabled={zoom <= 1} aria-label="Reduzir">
+          <Button variant="ghost" className={ctrl} onClick={() => setZoom((z) => Math.max(1, z - 0.5))} disabled={zoom <= 1} aria-label="Reduzir" title="Reduzir">
             <ZoomOut className="h-5 w-5" />
-          </button>
-          <button className={ctrl} onClick={() => setZoom((z) => Math.min(3, z + 0.5))} disabled={zoom >= 3} aria-label="Ampliar">
+          </Button>
+          <Button variant="ghost" className={ctrl} onClick={() => setZoom((z) => Math.min(3, z + 0.5))} disabled={zoom >= 3} aria-label="Ampliar" title="Ampliar">
             <ZoomIn className="h-5 w-5" />
-          </button>
-          <button className={ctrl} onClick={onClose} aria-label="Fechar">
+          </Button>
+          <Button variant="ghost" className={ctrl} onClick={onClose} aria-label="Fechar" title="Fechar">
             <X className="h-6 w-6" />
-          </button>
+          </Button>
         </div>
       </div>
 
-      <div className="relative flex-1 overflow-auto" onClick={(e) => e.target === e.currentTarget && zoom === 1 && onClose()}>
-        <div className="flex min-h-full items-center justify-center p-3" style={{ width: `${zoom * 100}%` }}>
+      <div className="relative min-h-0 flex-1 overflow-auto" onClick={(e) => e.target === e.currentTarget && zoom === 1 && onClose()}>
+        <div className={cn("flex items-center justify-center p-3", zoom === 1 ? "h-full" : "min-h-full")} style={{ width: `${zoom * 100}%` }}>
           <img
             src={folheto.paginas[page]}
             alt={`${folheto.nome} — página ${page + 1}`}
-            className="max-w-full rounded-lg shadow-card"
-            style={{ maxHeight: zoom === 1 ? "calc(100vh - 6rem)" : "none" }}
+            className={cn("max-w-full rounded-lg object-contain shadow-card", expired && "grayscale")}
+            style={{ maxHeight: zoom === 1 ? "100%" : "none" }}
             onDoubleClick={() => setZoom((z) => (z === 1 ? 2 : 1))}
           />
         </div>
       </div>
 
+      {status && !expired && (
+        <div className="shrink-0 border-t border-primary-foreground/15 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 text-center sm:px-6">
+          <FlyerOrderButton className="w-full sm:w-auto sm:min-w-56" />
+        </div>
+      )}
+
       {total > 1 && (
         <>
-          <button
+          <Button variant="ghost"
             className={`${ctrl} absolute left-3 top-1/2 -translate-y-1/2`}
             onClick={() => setPage((p) => p - 1)}
             disabled={page === 0}
             aria-label="Página anterior"
           >
             <ChevronLeft className="h-6 w-6" />
-          </button>
-          <button
+          </Button>
+          <Button variant="ghost"
             className={`${ctrl} absolute right-3 top-1/2 -translate-y-1/2`}
             onClick={() => setPage((p) => p + 1)}
             disabled={page === total - 1}
             aria-label="Próxima página"
           >
             <ChevronRight className="h-6 w-6" />
-          </button>
+          </Button>
         </>
       )}
     </div>
