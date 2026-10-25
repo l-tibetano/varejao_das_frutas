@@ -1,12 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
-import logoAsset from "@/assets/logo-varejao.png.asset.json";
+import logoVarejao from "@/assets/logo-varejao.jpg";
 
 export function Logo({ inverted = false }: { inverted?: boolean }) {
   return (
     <Link to="/" className="flex items-center gap-2.5" aria-label="Varejão das Frutas — página inicial">
       <img
-        src={logoAsset.url}
+        src={logoVarejao}
         alt=""
         width={584}
         height={524}
