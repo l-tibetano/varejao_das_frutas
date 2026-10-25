@@ -24,7 +24,7 @@ describe("initial login rules", () => {
     expect(loginSchema.safeParse({ email: "invalid", password: "test" }).success).toBe(false);
     await expect(requestLogin({ email: "invalid", password: "test" })).rejects.toThrow();
     renderForm();
-    fireEvent.click(screen.getByRole("button", { name: "Entrar", exact: true }));
+    fireEvent.click(screen.getByRole("button", { name: /^Entrar$/ }));
     await waitFor(() => expect(screen.getAllByRole("alert")).toHaveLength(2));
     expect(fetchMock).not.toHaveBeenCalled();
   });
@@ -47,7 +47,7 @@ describe("initial login rules", () => {
     vi.stubGlobal("fetch", fetchMock);
     renderForm();
     fillForm();
-    fireEvent.click(screen.getByRole("button", { name: "Entrar", exact: true }));
+    fireEvent.click(screen.getByRole("button", { name: /^Entrar$/ }));
     await waitFor(() => expect(screen.getByRole("button", { name: "Entrando…" })).toBeDisabled());
     fireEvent.click(screen.getByRole("button", { name: "Entrando…" }));
     expect(fetchMock).toHaveBeenCalledTimes(1);
@@ -55,9 +55,9 @@ describe("initial login rules", () => {
     rejectRequest(new Error("sensitive technical details"));
     await waitFor(() => expect(screen.getByRole("alert")).toHaveTextContent("Não foi possível realizar o login no momento. Tente novamente mais tarde."));
     expect(screen.queryByText("sensitive technical details")).not.toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Entrar", exact: true })).toBeEnabled();
+    expect(screen.getByRole("button", { name: /^Entrar$/ })).toBeEnabled();
     fetchMock.mockRejectedValue(new Error("offline"));
-    fireEvent.click(screen.getByRole("button", { name: "Entrar", exact: true }));
+    fireEvent.click(screen.getByRole("button", { name: /^Entrar$/ }));
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
   });
 
