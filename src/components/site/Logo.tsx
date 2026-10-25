@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
-import logoVarejao from "@/assets/logo-varejao.jpg";
+import logoVarejao from "@/assets/logo-varejao.png";
 
 export function Logo({ inverted = false }: { inverted?: boolean }) {
   return (
