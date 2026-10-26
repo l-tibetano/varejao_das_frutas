@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { BrandSymbol } from "@/components/site/BrandSymbol";
+import logoVarejao from "@/assets/logo-varejao.jpg";
 import { LoginForm } from "@/components/site/LoginForm";
 
 const title = "Entrar na sua conta — Varejão das Frutas";
@@ -23,7 +23,17 @@ function Login() {
   return (
     <section className="container-site py-12 sm:py-16">
       <div className="mx-auto max-w-sm">
-        <BrandSymbol className="mx-auto h-20" />
+        <div className="mx-auto w-fit rounded-2xl bg-card p-3 shadow-card sm:p-4">
+          <img
+            src={logoVarejao}
+            alt=""
+            aria-hidden="true"
+            width={584}
+            height={524}
+            draggable={false}
+            className="h-20 w-auto max-w-none object-contain sm:h-24"
+          />
+        </div>
         <h1 className="mt-4 text-center text-3xl font-extrabold tracking-normal text-foreground sm:text-4xl">Entre na sua conta</h1>
         <span className="mx-auto mt-3 block h-1 w-16 rounded-full bg-promo" />
         <LoginForm />

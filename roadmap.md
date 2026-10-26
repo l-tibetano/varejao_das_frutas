@@ -7,3 +7,4 @@
 - [x] Verify ordering and viewing on desktop and mobile.
 - [x] Show the brand symbol from src/assets on the Sobre and Contato openings and in the flyer viewer bar.
 - [x] Move the header "Entrar" button to the right side, keeping its style and /login target.
+- [x] Show the local logo JPG above the /login title, leaving header, footer and other pages untouched.
