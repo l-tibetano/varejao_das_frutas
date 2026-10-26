@@ -3,7 +3,7 @@ import { RouterContextProvider, createRouter } from "@tanstack/react-router";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import logoVarejao from "@/assets/logo-varejao.jpg";
+import logoVarejao from "@/assets/logo-varejao.png";
 import { routeTree } from "@/routeTree.gen";
 import { Route as LoginRoute } from "@/routes/login";
 
@@ -20,7 +20,7 @@ const renderLogin = () => {
 };
 
 describe("logo da página de login", () => {
-  it("usa a imagem local src/assets/logo-varejao.jpg", () => {
+  it("usa a imagem local src/assets/logo-varejao.png", () => {
     const { container } = renderLogin();
     const img = container.querySelector(`img[src="${logoVarejao}"]`);
     expect(img).toBeTruthy();

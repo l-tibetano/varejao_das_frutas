@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import logoVarejao from "@/assets/logo-varejao.jpg";
+import logoVarejao from "@/assets/logo-varejao.png";
 import { LoginForm } from "@/components/site/LoginForm";
 
 const title = "Entrar na sua conta — Varejão das Frutas";
