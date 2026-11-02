@@ -4,6 +4,7 @@ import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import logoAsset from "@/assets/logo-varejao.png.asset.json";
+import logoVarejao from "@/assets/logo-varejao.png";
 import { folhetos } from "@/data/folhetos";
 import { routeTree } from "@/routeTree.gen";
 import { FlyerViewer } from "@/components/site/FlyerViewer";
