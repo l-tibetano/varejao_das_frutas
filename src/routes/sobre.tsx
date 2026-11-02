@@ -117,7 +117,15 @@ function NossaEssencia() {
 function Sobre() {
   return (
     <div className="container-site max-w-4xl py-12 sm:py-16">
-      <BrandSymbol className="mx-auto h-20" />
+      <img
+        src={logoVarejao}
+        alt=""
+        aria-hidden="true"
+        width={1324}
+        height={1188}
+        draggable={false}
+        className="mx-auto h-20 w-auto max-w-none shrink-0 object-contain"
+      />
       <h1 className="mt-3 text-center text-4xl font-extrabold text-foreground sm:text-5xl">Sobre o Varejão das Frutas</h1>
       <span className="mx-auto mt-3 block h-1 w-16 rounded-full bg-promo" />
 
