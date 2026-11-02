@@ -3,7 +3,7 @@ import { BadgeCheck, Eye, Heart, HeartHandshake, MapPin, Rocket, Store, Target, 
 import { DeliveryConditionCard } from "@/components/site/DeliveryConditionCard";
 import { DeliveryHours } from "@/components/site/DeliveryHours";
 import { cidadesTexto, condicoesEntrega, delivery, formatBRL } from "@/data/delivery";
-import { BrandSymbol } from "@/components/site/BrandSymbol";
+import logoVarejao from "@/assets/logo-varejao.png";
 
 const title = "Sobre o Varejão das Frutas — Quem somos e nosso delivery";
 const description =
@@ -117,7 +117,15 @@ function NossaEssencia() {
 function Sobre() {
   return (
     <div className="container-site max-w-4xl py-12 sm:py-16">
-      <BrandSymbol className="mx-auto h-20" />
+      <img
+        src={logoVarejao}
+        alt=""
+        aria-hidden="true"
+        width={1324}
+        height={1188}
+        draggable={false}
+        className="mx-auto h-20 w-auto max-w-none shrink-0 object-contain"
+      />
       <h1 className="mt-3 text-center text-4xl font-extrabold text-foreground sm:text-5xl">Sobre o Varejão das Frutas</h1>
       <span className="mx-auto mt-3 block h-1 w-16 rounded-full bg-promo" />
 
