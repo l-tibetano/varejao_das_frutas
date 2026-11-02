@@ -17,22 +17,24 @@ const comRota = ({ children }: { children: React.ReactNode }) => (
   <RouterContextProvider router={router}>{children}</RouterContextProvider>
 );
 
-// O símbolo vem do arquivo em src/assets e precisa aparecer nas páginas que não
-// têm marca própria (Sobre, Contato) e na ampliação dos folhetos.
+// O símbolo vem do arquivo em src/assets e aparece na ampliação dos folhetos;
+// as páginas Sobre e Contato agora usam a mesma logo do menu e do rodapé.
 const temSimbolo = (container: HTMLElement) =>
   Boolean(container.querySelector(`img[src="${logoAsset.url}"]`));
+const temLogoLocal = (container: HTMLElement) =>
+  Boolean(container.querySelector(`img[src="${logoVarejao}"]`));
 
 describe("símbolo do Varejão das Frutas", () => {
   it("aparece no topo da página Sobre", () => {
     const Sobre = SobreRoute.options.component as React.FC;
     const { container } = render(<Sobre />, { wrapper: comRota });
-    expect(temSimbolo(container)).toBe(true);
+    expect(temLogoLocal(container)).toBe(true);
   });
 
   it("aparece no topo da página Contato", () => {
     const Contato = ContatoRoute.options.component as React.FC;
     const { container } = render(<Contato />, { wrapper: comRota });
-    expect(temSimbolo(container)).toBe(true);
+    expect(temLogoLocal(container)).toBe(true);
   });
 
   it("aparece na barra da ampliação de folheto", () => {
