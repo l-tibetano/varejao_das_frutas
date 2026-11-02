@@ -10,6 +10,6 @@
 <!-- LOVABLE:END -->
 
 - Keep About-only institutional content and its presentation in the About route, reusing existing semantic tokens; this isolates institutional updates from shared pages and layouts.
-- Flyer cards and their viewer share the browser-updated offer-status hook and order-link component, so expiration and WhatsApp behavior remain consistent without duplicating dates or contact URLs.
+- Flyer cards and their viewer share the browser-updated offer-status hook and order-link component, so expiration and ordering behavior remain consistent without duplicating dates or destination URLs.
 - Import header and footer artwork directly through the shared Logo component; keep BrandSymbol and public browser/home-screen icons independent so a header/footer-only update does not change other placements.
 - Keep initial login configuration and validated browser requests separate from the form; the placeholder request never creates a session, so connecting real authentication requires an explicit later implementation.
