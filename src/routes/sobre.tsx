@@ -3,7 +3,7 @@ import { BadgeCheck, Eye, Heart, HeartHandshake, MapPin, Rocket, Store, Target, 
 import { DeliveryConditionCard } from "@/components/site/DeliveryConditionCard";
 import { DeliveryHours } from "@/components/site/DeliveryHours";
 import { cidadesTexto, condicoesEntrega, delivery, formatBRL } from "@/data/delivery";
-import { BrandSymbol } from "@/components/site/BrandSymbol";
+import logoVarejao from "@/assets/logo-varejao.png";
 
 const title = "Sobre o Varejão das Frutas — Quem somos e nosso delivery";
 const description =

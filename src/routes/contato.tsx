@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { mapsUrl } from "@/data/lojas";
 import { contato } from "@/data/site";
-import { BrandSymbol } from "@/components/site/BrandSymbol";
+import logoVarejao from "@/assets/logo-varejao.png";
 
 
 const title = "Contato — Varejão das Frutas";
