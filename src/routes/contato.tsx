@@ -57,7 +57,7 @@ function Contato() {
       <h2 className="mt-10 mb-4 text-2xl font-bold text-foreground">Contato geral</h2>
       <div className="grid gap-4 sm:grid-cols-2">
         <Item icon={Phone} label="Telefone">
-          <a href={contato.telefoneLink} className={link}>{contato.telefone}</a>
+          <a href={contato.whatsappUrl} className={link}>{contato.telefone}</a>
         </Item>
         <Item icon={Mail} label="E-mail">
           <a href={`mailto:${contato.email}`} className={`${link} break-all`}>{contato.email}</a>
